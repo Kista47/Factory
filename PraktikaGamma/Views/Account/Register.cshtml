@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model PraktikaGamma.ViewModels.RegisterViewModel
+    <div class="container justify-content-center">
+        <div class="middle-card text-center log-or-val">
+            <h2>Регистрация нового пользователя</h2>
+            <form method="post" asp-controller="Account" asp-action="Register">
+                <div asp-validation-summary="ModelOnly"></div>
+
+                <div>
+                    <label asp-for="UserName"></label>          <br />
+                    <input asp-for="UserName" />                <br />
+                    <span asp-validation-for="UserName"></span>
+                </div>
+                <div>
+                    <label asp-for="Password"></label>          <br />
+                    <input asp-for="Password" />                <br />
+                    <span asp-validation-for="Password"></span>
+                </div>
+                <div>
+                    <label asp-for="PasswordConfirm"></label>   <br />
+                    <input asp-for="PasswordConfirm" />         <br />
+                    <span asp-validation-for="PasswordConfirm"></span>
+                </div>
+                <div>
+                    <input type="submit" value="Регистрация" />
+                </div>
+            </form>
+        </div>
+    </div>
