@@ -35,7 +35,7 @@ namespace PraktikaGamma
 
             services.AddIdentity<User, IdentityRole>(options =>
             {
-                options.Password.RequiredLength = 10;
+                options.Password.RequiredLength = 5;
                 options.Password.RequireNonAlphanumeric = false;
             })
                 .AddEntityFrameworkStores<EmployeeContext>();

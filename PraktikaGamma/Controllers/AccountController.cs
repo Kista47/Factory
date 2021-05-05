@@ -62,9 +62,9 @@ namespace PraktikaGamma.Controllers
             {
                 var result = await _accountService.Login(model);
 
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Home", "Index");
+                if (result.Result.Succeeded)
+                { 
+                    return RedirectToAction("Index", result.Role);
                 }
                 else
                 {

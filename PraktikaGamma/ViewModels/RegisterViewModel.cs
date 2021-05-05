@@ -13,7 +13,7 @@ namespace PraktikaGamma.ViewModels
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Это поле не должно быть пустым")]
-        [StringLength(100, ErrorMessage = "Поле {0} должно иметь минимум {2} и максимум {1} символов.", MinimumLength = 10)]
+        [StringLength(100, ErrorMessage = "{0} должty иметь минимум {2} и максимум {1} символов.", MinimumLength = 5)]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }

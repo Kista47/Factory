@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PraktikaGamma.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,17 @@ namespace PraktikaGamma.Services
     {
         public static IServiceCollection AddFactoryService(this IServiceCollection services)
         {
-            services.AddTransient<AccountService>();
-            return services;
+            services.AddScoped<AccountService>();
+            services.AddScoped<DepartmentRepository>();
+            services.AddScoped<DepartmentTaskRepository>();
+            services.AddScoped<AssembliesRepository>();
+            services.AddScoped<DepartmentRepository>();
+            services.AddScoped<DetailsRepository>();
+            services.AddScoped<DirectorService>();
+            //services.AddTransient<DepChiefService>();
+            //services.AddTransient<WorkerService>();
 
+            return services;
         }
 
 

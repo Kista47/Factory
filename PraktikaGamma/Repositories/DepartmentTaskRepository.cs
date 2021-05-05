@@ -36,7 +36,7 @@ namespace PraktikaGamma.Repositories
             }).ToArray();
         }
 
-        public  ICollection<Assembley> GetTaskAssembleys(DbDepartmentTask dbDepartmentTask)
+        public ICollection<Assembley> GetTaskAssembleys(DbDepartmentTask dbDepartmentTask)
         {
             _dataBase.Entry(dbDepartmentTask).Collection(task => task.Assembleys).Load();
 

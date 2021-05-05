@@ -15,26 +15,38 @@ namespace PraktikaGamma.Services
         private readonly SignInManager<User> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountService(UserManager<User> userManager, SignInManager<User> signInManager,RoleManager<IdentityRole> roleManager)
+        public AccountService(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager)
         {
-            _userManager    = userManager;
-            _signInManager  = signInManager;
-            _roleManager    = roleManager;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         public async Task<IdentityResult> Register(RegisterViewModel model)
         {
-            var result = await _userManager.CreateAsync(new User { UserName = model.UserName}, model.Password);
+            var result = await _userManager.CreateAsync(new User { UserName = model.UserName }, model.Password);
 
-            return result; 
+            User user = await _userManager.FindByNameAsync(model.UserName);
+
+            await _userManager.AddToRoleAsync(user, "Director");
+
+            return result;
         }
 
-        public async Task<Microsoft.AspNetCore.Identity.SignInResult> Login(LoginViewModel model)
+        public async Task<RolesLoginViewModel> Login(LoginViewModel model)
         {
-            await _roleManager.CreateAsync(new IdentityRole("Worker"));
-
             var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
-            return result;
+
+            User user = null;
+            RolesLoginViewModel viewModel = new RolesLoginViewModel() { Result = result };
+
+            if (result.Succeeded)
+            {
+                user = await _userManager.FindByNameAsync(model.UserName);
+                viewModel.Role = (await _userManager.GetRolesAsync(user))[0];
+            }
+
+            return viewModel;
         }
     }
 }

@@ -8,24 +8,19 @@ using System.Threading.Tasks;
 
 namespace PraktikaGamma.Controllers
 {
-    [Authorize(Roles = "Director")]
+    //[Authorize(Roles = "Director")]
     public class DirectorController : Controller
     {
-        private DirectorService _directorService;
+        private readonly DirectorService _directorService;
 
         public DirectorController(DirectorService directorService)
         {
             _directorService = directorService;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _directorService.GetDepartments());
+            return View();
         }
-
-
-
-
-
     }
 }

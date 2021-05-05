@@ -10,19 +10,15 @@ namespace PraktikaGamma.Services
 {
     public class DirectorService
     {
-        private DepartmentRepository _departmentRepository;
+        private readonly DepartmentRepository _departmentRepository;
         public DirectorService(DepartmentRepository departmentRepository)
         {
-            _departmentRepository = departmentRepository;
+           _departmentRepository = departmentRepository;
         }
 
-        public async Task<IEnumerable<Department>> GetDepartments()
-        {
-            return await _departmentRepository.GetDepartments();
-        }
-
-
-
-
+        //public async Task<IEnumerable<Department>> GetDepartments()
+        //{
+        //    return await _departmentRepository.GetDepartments();
+        //}
     }
 }

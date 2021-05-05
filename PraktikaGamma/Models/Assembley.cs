@@ -1,4 +1,5 @@
 ﻿using PraktikaGamma.DataBaseEntity.Bounds;
+using PraktikaGamma.DataBaseEntity.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,7 @@ namespace PraktikaGamma.Models
         public int Time { get; set; }
 
         public List<Detail> Details { get; set; } = new List<Detail>();
-
-        public virtual List<AssembleySet> MainAssembleys { get; set; } = new List<AssembleySet>();
-        public virtual List<AssembleySet> DerivativeAssemblies { get; set; } = new List<AssembleySet>();
-
-        public virtual List<DepartmentTask> Tasks { get; set; } = new List<DepartmentTask>();
-        public List<TaskAssembley> TaskAssemblies { get; set; } = new List<TaskAssembley>();
+        public virtual List<Assembley> Assembleys { get; set; } = new List<Assembley>();
 
         public Assembley(int id, string name, string info, int time)
         {
@@ -28,5 +24,14 @@ namespace PraktikaGamma.Models
             Info = info;
             Time = time;
         }
+
+        public Assembley(DbAssembley dbAssembley)
+        {
+            Id = dbAssembley.Id;
+            Name = dbAssembley.Name;
+            Info = dbAssembley.Info;
+            Time = dbAssembley.Time;
+        }
+
     }
 }

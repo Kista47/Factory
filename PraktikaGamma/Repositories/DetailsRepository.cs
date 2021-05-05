@@ -1,4 +1,6 @@
-﻿using PraktikaGamma.Models.Context;
+﻿using PraktikaGamma.DataBaseEntity.Model;
+using PraktikaGamma.Models;
+using PraktikaGamma.Models.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,16 @@ namespace PraktikaGamma.Repositories
         public DetailsRepository(EmployeeContext context)
         {
             _dataBase = context;
+        }
+
+        public async Task<IReadOnlyCollection<Detail>> GetDetailsByAssembleyId(int AssembleyId)
+        {
+            var dbDetails = await _dataBase.Assemblies.FindAsync(AssembleyId).ConfigureAwait(false);
+
+            return dbDetails.Details.Select(dbDetail =>
+            {
+                return new Detail(dbDetail.Id, dbDetail.Name, dbDetail.Info, dbDetail.Manual);
+            }).ToArray();
         }
 
 

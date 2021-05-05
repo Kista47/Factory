@@ -22,5 +22,21 @@ namespace PraktikaGamma.DataBaseEntity.Model
 
         public virtual List<DbDepartmentTask> Tasks { get; set; } = new List<DbDepartmentTask>();
         public List<TaskAssembley> TaskAssemblies { get; set; } = new List<TaskAssembley>();
+
+        public DbAssembley(Assembley assembley)
+        {
+            Id = assembley.Id;
+            Name = assembley.Name;
+            Info = assembley.Info;
+            Time = assembley.Time;
+        }
+
+        public DbAssembley(int id, string name, string info, int time)
+        {
+            Id = id;
+            Name = name;
+            Info = info;
+            Time = time;
+        }
     }
 }

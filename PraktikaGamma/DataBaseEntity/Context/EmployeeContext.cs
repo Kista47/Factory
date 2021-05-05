@@ -14,11 +14,10 @@ namespace PraktikaGamma.Models.Context
         public DbSet<DbDepartment> Departments { get; set; }
         public DbSet<DbDepartmentTask> DepartmentTasks { get; set; }
         public DbSet<DbDetail> Details { get; set; }
-        public DbSet<DbAssembley> Assembleys { get; set; }
+        public DbSet<DbAssembley> Assemblies { get; set; }
 
         public EmployeeContext(DbContextOptions<EmployeeContext> options) : base(options)
         {
-            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
@@ -88,7 +87,5 @@ namespace PraktikaGamma.Models.Context
             });
         }
     }
-
-
 }
 

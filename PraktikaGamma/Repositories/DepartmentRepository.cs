@@ -17,16 +17,16 @@ namespace PraktikaGamma.Repositories
             _dataBase = context;
         }
 
-        public async Task<IEnumerable<Department>> GetDepartments()
-        {
-            var dbDepartments = await _dataBase.Departments.OrderBy(department => department.Name).ToArrayAsync().ConfigureAwait(false);
+        //public async Task<IEnumerable<Department>> GetDepartments()
+        //{
+        //    var dbDepartments = await _dataBase.Departments.OrderBy(department => department.Name).ToArrayAsync().ConfigureAwait(false);
 
-            return dbDepartments.Select(department =>
-            {
-                return new Department(department.Id,
-                                      department.Name,
-                                      department.Chief);
-            }).ToList();
-        }
+        //    return dbDepartments.Select(department =>
+        //    {
+        //        return new Department(department.Id,
+        //                              department.Name,
+        //                              department.Chief);
+        //    }).ToList();
+        //}
     }
 }
