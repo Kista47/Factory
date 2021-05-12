@@ -1,0 +1,8 @@
+﻿
+.department-card{
+    max-height : 300px;
+    min-height : 200px;
+
+    max-width : 250px;
+    min-width : 200px;
+}

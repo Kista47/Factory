@@ -1,5 +1,10 @@
 ﻿@using PraktikaGamma.ViewModels
 @model IReadOnlyCollection<Department>
+
+<div class="container">
+    <a class="nav-link btn-success w-100 text-center" asp-action="CreateDepartment" asp-controller="Admin">Создать отдел</a>
+</div>
+
 <div class="container-fluid">
     <div class="col-12">
         <div class="d-flex flex-wrap justify-content-center">
@@ -11,8 +16,8 @@
                         <h5 class="card-title">@department.Name</h5>
                         <h6 class="card-subtitle mb-2 text-muted">@department.Chief</h6>
                         <p class="card-text">Последнее задание</p>
-                        <input type="submit" class="btn-info w-75 rounded-pill mw-100 mb-1" value="Подробнее" />
-                        <input type="submit" class="btn-success w-75 rounded-pill mw-100 mb-1" value="Задание" />
+                        <input type="submit" class="btn-info w-75 rounded-pill mw-100 mb-1" value="Изменить" />
+                        <input type="submit" class="btn-success w-75 rounded-pill mw-100 mb-1" value="Удалить" />
                     </div>
                 </div>
             }

@@ -15,10 +15,9 @@ namespace PraktikaGamma.Services
         {
            _departmentRepository = departmentRepository;
         }
-
-        //public async Task<IEnumerable<Department>> GetDepartments()
-        //{
-        //    return await _departmentRepository.GetDepartments();
-        //}
+        public async Task<IEnumerable<Department>> GetDepartments()
+        {
+            return await _departmentRepository.GetDepartments();
+        }
     }
 }

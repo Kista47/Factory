@@ -18,6 +18,7 @@ namespace PraktikaGamma.Services
             services.AddScoped<DepartmentRepository>();
             services.AddScoped<DetailsRepository>();
             services.AddScoped<DirectorService>();
+            services.AddScoped<AdminService>();
             //services.AddTransient<DepChiefService>();
             //services.AddTransient<WorkerService>();
 

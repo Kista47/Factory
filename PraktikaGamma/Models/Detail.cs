@@ -7,14 +7,18 @@ namespace PraktikaGamma.Models
 {
     public class Detail
     {
-        public int Id { get; set; }
+        public int Id { get;}
         public string Name { get; set; }
         public string Info { get; set; }
         public string Manual { get; set; }
 
-        public Detail(int id, string name, string info, string manual)
+        public Detail(int id, string name, string info, string manual) : this(name, info, manual)
         {
             Id = id;
+        }
+
+        public Detail(string name, string info, string manual)
+        {
             Name = name;
             Info = info;
             Manual = manual;

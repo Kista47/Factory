@@ -28,7 +28,9 @@ namespace PraktikaGamma.Services
 
             User user = await _userManager.FindByNameAsync(model.UserName);
 
-            await _userManager.AddToRoleAsync(user, "Director");
+           //await _roleManager.CreateAsync(new IdentityRole("Admin"));
+
+            await _userManager.AddToRoleAsync(user, "Admin");
 
             return result;
         }
