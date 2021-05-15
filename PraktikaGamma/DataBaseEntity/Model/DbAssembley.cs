@@ -27,7 +27,7 @@ namespace PraktikaGamma.DataBaseEntity.Model
         {
             Id = assembley.Id;
             Name = assembley.Name;
-            Info = assembley.Info;
+            Info = assembley.Manual;
             Time = assembley.Time;
         }
 
@@ -38,5 +38,7 @@ namespace PraktikaGamma.DataBaseEntity.Model
             Info = info;
             Time = time;
         }
+
+        public DbAssembley() { }
     }
 }

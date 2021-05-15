@@ -14,7 +14,7 @@ namespace PraktikaGamma.Models
         public string Time { get; set; }
 
         public int? DepartmentId { get; set; }
-
+        public Department Department { get; set; }
         public ICollection<Assembley> Assemblies { get; set; } = new List<Assembley>();
 
         public DepartmentTask(int id, string name, string info, string time, int? departmentId, ICollection<Assembley> assemblies)
@@ -25,6 +25,19 @@ namespace PraktikaGamma.Models
             Time = time;
             DepartmentId = departmentId;
             Assemblies = assemblies;
+        }
+
+        public DepartmentTask(int id, string name, string info, string time)
+        {
+            Id = id;
+            Name = name;
+            Info = info;
+            Time = time;
+        }
+
+        public DepartmentTask(int id, string name, string info, string time, Department department) : this(id, name, info, time)
+        {
+            Department = department;
         }
     }
 }

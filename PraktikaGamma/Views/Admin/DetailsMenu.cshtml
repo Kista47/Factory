@@ -1,20 +1,20 @@
-﻿@model IReadOnlyCollection<Department>
+﻿@model IReadOnlyCollection<Detail>
 
 <div class="container">
-    <a class="nav-link btn-success w-100 text-center" asp-action="CreateDepartment" asp-controller="Admin">Создать отдел</a>
+    <a class="nav-link btn-success w-100 text-center" asp-action="CreateDetail" asp-controller="Admin">Создать деталь</a>
 </div>
 
 <div class="container-fluid">
     <div class="col-12">
         <div class="d-flex flex-wrap justify-content-center">
 
-            @foreach (var department in Model)
+            @foreach (var assembley in Model)
             {
                 <div class="card department-card text-center m-1" style="width: 18rem;">
                     <div class="card-body ">
-                        <h5 class="card-title">@department.Name</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">@department.Chief</h6>
-                        <p class="card-text">Последнее задание</p>
+                        <h5 class="card-title">@assembley.Name</h5>
+                        <p class="card-text">Время сборки:@assembley.Info</p>
+                        <h6 class="card-subtitle mb-2 text-muted">@assembley.Manual</h6>
                         <input type="submit" class="btn-info w-75 rounded-pill mw-100 mb-1" value="Изменить" />
                         <input type="submit" class="btn-success w-75 rounded-pill mw-100 mb-1" value="Удалить" />
                     </div>

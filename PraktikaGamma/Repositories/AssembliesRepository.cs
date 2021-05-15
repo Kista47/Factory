@@ -1,7 +1,7 @@
-﻿using PraktikaGamma.DataBaseEntity.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using PraktikaGamma.DataBaseEntity.Model;
 using PraktikaGamma.Models;
 using PraktikaGamma.Models.Context;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,7 +10,12 @@ namespace PraktikaGamma.Repositories
 {
     public class AssembliesRepository
     {
-        EmployeeContext _dataBase;
+        private EmployeeContext _dataBase;
+
+        public AssembliesRepository(EmployeeContext dataBase)
+        {
+            _dataBase = dataBase;
+        }
 
         public async Task<Assembley> GetAssembleyById(int id)
         {
@@ -28,8 +33,32 @@ namespace PraktikaGamma.Repositories
                 return new Assembley(dbAssembley);
             }).ToArray();
         }
+
+        public async Task<IReadOnlyCollection<Assembley>> GetAssembleys()
+        {
+            var dbAssems = await _dataBase.Assemblies.OrderBy(assem => assem.Name).ToArrayAsync().ConfigureAwait(false);
+
+            return dbAssems.Select(assem =>
+            {
+                return new Assembley(assem);
+            }).ToArray();
+        }
+
+        public async Task CreateAssembley(Assembley assembley)
+        {
+            await _dataBase.Assemblies.AddAsync(TransformAssembley(assembley)).ConfigureAwait(false);
+            await _dataBase.SaveChangesAsync().ConfigureAwait(false);
+        }
+
+        public DbAssembley TransformAssembley(Assembley assembley)
+        {
+            return new DbAssembley
+            {
+                Name = assembley.Name,
+                Time = assembley.Time,
+                Info = assembley.Manual
+            };
+        }
+
     }
-
-
-
 }

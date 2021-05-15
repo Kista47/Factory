@@ -1,0 +1,24 @@
+﻿@model Detail
+<div class="container">
+    <div class="row">
+        <div class="container bg-light">
+            <div class="form-group">
+                <form method="post" action="~/Admin/CreateDetail">
+                    <label>Название отдела:</label><br />
+                    <input asp-for="@Model.Name" type="text" class="form-control" />
+                    <span asp-validation-for="@Model.Name" class="text-danger"></span><br />
+
+                    <label>Информация:</label><br />
+                    <input asp-for="@Model.Info" type="text" class="form-control" />
+                    <span asp-validation-for="@Model.Info" class="text-danger"></span><br />
+
+                    <label>Руководство:</label><br />
+                    <input asp-for="@Model.Manual" type="text" class="form-control" />
+                    <span asp-validation-for="@Model.Manual" class="text-danger"></span><br />
+
+                    <input type="submit" value="Отправить" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -11,27 +11,35 @@ namespace PraktikaGamma.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Info { get; set; }
+        public string Manual { get; set; }
         public int Time { get; set; }
 
         public List<Detail> Details { get; set; } = new List<Detail>();
         public virtual List<Assembley> Assembleys { get; set; } = new List<Assembley>();
 
-        public Assembley(int id, string name, string info, int time)
+        public Assembley() { }
+        public Assembley(string name, int time, string info)
         {
-            Id = id;
             Name = name;
-            Info = info;
+            Manual = info;
             Time = time;
         }
-
+        public Assembley(int id, string name, string info, int time) : this(name, time, info)
+        {
+            Id = id;
+        }
         public Assembley(DbAssembley dbAssembley)
         {
             Id = dbAssembley.Id;
             Name = dbAssembley.Name;
-            Info = dbAssembley.Info;
+            Manual = dbAssembley.Info;
             Time = dbAssembley.Time;
         }
 
+        public Assembley(int id, string name, string info, int time, List<Detail> details, List<Assembley> assembleys) : this(id, name, info, time)
+        {
+            Details = details;
+            Assembleys = assembleys;
+        }
     }
 }
