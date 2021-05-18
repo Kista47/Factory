@@ -1,4 +1,5 @@
-﻿using PraktikaGamma.DataBaseEntity.Model;
+﻿using PraktikaGamma.DataBaseEntity.Bounds;
+using PraktikaGamma.DataBaseEntity.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace PraktikaGamma.Models
         public string Info { get; set; }
         public string Manual { get; set; }
 
+        public List<AssembleyDetail> AssembleyDetails { get; set; } = new List<AssembleyDetail>();
+        public List<DbAssembley> Assemblies { get; set; } = new List<DbAssembley>();
 
         public Detail() { }
         public Detail(int id, string name, string info, string manual) : this(name, info, manual)

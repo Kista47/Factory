@@ -17,6 +17,10 @@ namespace PraktikaGamma.Models
         public List<Detail> Details { get; set; } = new List<Detail>();
         public virtual List<Assembley> Assembleys { get; set; } = new List<Assembley>();
 
+        public List<AssembleyDetail> AssembleyDetails { get; set; } = new List<AssembleyDetail>();
+        public virtual List<AssembleySet> MainAssembleys { get; set; } = new List<AssembleySet>();
+        public virtual List<AssembleySet> DerivativeAssemblies { get; set; } = new List<AssembleySet>();
+
         public Assembley() { }
         public Assembley(string name, int time, string info)
         {

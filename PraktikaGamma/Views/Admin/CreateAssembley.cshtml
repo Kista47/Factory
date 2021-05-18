@@ -16,58 +16,7 @@
 
                     <div class="row">
 
-                        <script>
-                            function AddDetail() {
-                                $.ajax({
-                                    url: "/AdminController/AddDetailById",
-                                    type: "post",
-                                    contentType: 'application/x-www-form-urlencoded',
-                                    data: {id: 1},
-                                    success: function (result) {
-                                        AddHtmlDetail(result);
-                                        console.log(result);
-                                    }
-                                });
-
-
-                                function AddHtmlDetail(detail) {
-                                    let mainDiv = document.getElementById("test");
-
-                                    let div_Card = document.createElement("div");
-                                    div_Card.classList.add("card", "department-card", "text-center", "m-1")
-
-                                    let div_Card_Body = document.createElement("div");
-                                    div_Card_Body.className = "card-body";
-
-                                    let DetailName = document.createElement("h5");
-                                    DetailName.className = "card-title";
-                                    DetailName.innerHTML = detail.name;
-
-                                    let DetailInfo = document.createElement("p");
-                                    DetailInfo.className = "card-text";
-                                    DetailInfo.innerHTML = detail.info;
-
-                                    let DetailManual = document.createElement("h6");
-                                    DetailManual.classList.add("card-subtitle", "mb-2", "text-muted");
-                                    DetailManual.innerHTML = detail.manual;
-
-                                    let DeleteButt = document.createElement("input");
-                                    DeleteButt.classList.add("btn-danger", "w-75", "rounded-pill", "mw-100", "mb-1");
-                                    DeleteButt.type = "submit";
-                                    DeleteButt.value = "Удалить"
-
-
-                                    div_Card_Body.appendChild(DetailName);
-                                    div_Card_Body.appendChild(DetailInfo);
-                                    div_Card_Body.appendChild(DetailManual);
-                                    div_Card_Body.appendChild(DeleteButt);
-
-                                    div_Card.appendChild(div_Card_Body);
-
-                                    mainDiv.appendChild(div_Card);
-                                };
-                            }
-                        </script>
+                        
 
                         <div class="col-12">
                             <div class="col-6 w-100">
@@ -80,7 +29,7 @@
                         </div>
                     </div>
 
-                    <div id="test" class="w-100 d-flex flex-wrap justify-content-center">
+                    <div id="details" class="w-100 d-flex flex-wrap justify-content-center">
 
                     </div>
 

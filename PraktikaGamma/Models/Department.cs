@@ -17,7 +17,7 @@ namespace PraktikaGamma.Models
         public string Chief { get; set; }
 
         public virtual ICollection<DepartmentTask> DepTasks { get; set; } = new List<DepartmentTask>();
-        //public virtual ICollection<User> Users { get; set; } = new List<User>();
+        public virtual ICollection<User> Users { get; set; } = new List<User>();
 
         public Department() { }
 

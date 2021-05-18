@@ -53,9 +53,9 @@ namespace PraktikaGamma.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAssembley(Assembley assembley)
+        public async Task<IActionResult> CreateAssembley(Assembley assembley, int[] detailsId, int[] detailsCounts)
         {
-            await _adminService.CreateAssembley(assembley).ConfigureAwait(false);
+            await _adminService.CreateAssembley(assembley, detailsId, detailsCounts).ConfigureAwait(false);
             return RedirectToRoute(new { controller = "Admin", action = "AssembliesMenu" });
         }
 
@@ -83,6 +83,11 @@ namespace PraktikaGamma.Controllers
             return new JsonResult(await _adminService.GetDetailById(id).ConfigureAwait(false));
         }
 
+        [HttpPost("/AdminController/DeleteDetailFromAssem")]
+        public async Task<IActionResult> DeleteDetailFromAssem(int id)
+        {
+            return new JsonResult("");
+        }
 
     }
 }

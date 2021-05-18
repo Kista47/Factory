@@ -1,4 +1,5 @@
 ﻿using PraktikaGamma.DataBaseEntity.Model;
+using PraktikaGamma.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,5 +14,6 @@ namespace PraktikaGamma.DataBaseEntity.Model
         public string Name { get; set; }
         public string Chief { get; set; }
         public virtual List<DbDepartmentTask> DepTasks { get; set; } = new List<DbDepartmentTask>();
+        public virtual ICollection<User> Users { get; set; } = new List<User>();
     }
 }

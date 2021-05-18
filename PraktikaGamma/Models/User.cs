@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using PraktikaGamma.DataBaseEntity.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,8 @@ namespace PraktikaGamma.Models
 {
     public class User : IdentityUser
     {
-        //public int DepartmentId { get; set; }
-       // public Department Department { get; set; }
+        public int? DbDepartmentId { get; set; }
+        public DbDepartment Department { get; set; }
 
     }
 }

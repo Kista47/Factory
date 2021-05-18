@@ -59,13 +59,26 @@ namespace PraktikaGamma.Repositories
             };
         }
 
+        public Detail TransformToDbDetail(DbDetail detail)
+        {
+            return new Detail()
+            {
+                Name = detail.Name,
+                Info = detail.Info,
+                Manual = detail.Manual
+            };
+        }
+
         public async Task<Detail> GetDetailById(int id)
         {
             var dbDetail = await _dataBase.Details.FindAsync(id).ConfigureAwait(false);
             return new Detail(id, dbDetail.Name, dbDetail.Info, dbDetail.Manual);
         }
 
-
+        public async Task<DbDetail> GetDbDetailById(int id)
+        {
+            return await _dataBase.Details.FindAsync(id).ConfigureAwait(false);
+        }
 
     }
 }

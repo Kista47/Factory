@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PraktikaGamma.DataBaseEntity.Bounds;
 using PraktikaGamma.DataBaseEntity.Model;
 using PraktikaGamma.Models;
 using PraktikaGamma.Models.Context;
@@ -11,10 +12,12 @@ namespace PraktikaGamma.Repositories
     public class AssembliesRepository
     {
         private EmployeeContext _dataBase;
+        private DetailsRepository _detailsRepository;
 
-        public AssembliesRepository(EmployeeContext dataBase)
+        public AssembliesRepository(EmployeeContext dataBase, DetailsRepository detailsRepository)
         {
             _dataBase = dataBase;
+            _detailsRepository = detailsRepository;
         }
 
         public async Task<Assembley> GetAssembleyById(int id)
@@ -44,9 +47,17 @@ namespace PraktikaGamma.Repositories
             }).ToArray();
         }
 
-        public async Task CreateAssembley(Assembley assembley)
+        public async Task CreateAssembley(Assembley assembley, int[] detailsId, int[] detailsCounts)
         {
-            await _dataBase.Assemblies.AddAsync(TransformAssembley(assembley)).ConfigureAwait(false);
+            var dbAssembley = TransformAssembley(assembley);
+            for (int i = 0; i < detailsId.Length; i++)
+            {
+
+
+                dbAssembley.AssembleyDetails.Add(new AssembleyDetail() { Detail = await _detailsRepository.GetDbDetailById(detailsId[i]), DetailCount = detailsCounts[0] });
+            }
+
+            await _dataBase.Assemblies.AddAsync(dbAssembley).ConfigureAwait(false);
             await _dataBase.SaveChangesAsync().ConfigureAwait(false);
         }
 
@@ -57,6 +68,15 @@ namespace PraktikaGamma.Repositories
                 Name = assembley.Name,
                 Time = assembley.Time,
                 Info = assembley.Manual
+            };
+        }
+        public DbDetail TransformToDbDetail(Detail detail)
+        {
+            return new DbDetail()
+            {
+                Name = detail.Name,
+                Info = detail.Info,
+                Manual = detail.Manual
             };
         }
 

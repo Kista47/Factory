@@ -35,9 +35,9 @@ namespace PraktikaGamma.Services
             return await _assembliesRepository.GetAssembleys().ConfigureAwait(false);
         }
 
-        public async Task CreateAssembley(Assembley assembley)
+        public async Task CreateAssembley(Assembley assembley, int[] detailsId, int[] detailsCounts)
         {
-            await _assembliesRepository.CreateAssembley(assembley);
+            await _assembliesRepository.CreateAssembley(assembley, detailsId, detailsCounts);
         }
 
         public async Task<IReadOnlyCollection<Detail>> GetDetails()
